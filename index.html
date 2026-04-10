@@ -143,6 +143,46 @@
     .tab-content { padding: 20px 16px; }
     .tabs-wrapper { padding: 0 16px; overflow-x: auto; }
   }
+
+  /* ── Data tables ── */
+  .data-table-wrap {
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .data-table thead th {
+    background: #0f3460;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .data-table thead th:not(:first-child) { text-align: right; }
+  .data-table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: nowrap;
+  }
+  .data-table tbody td:not(:first-child) { text-align: right; }
+  .data-table tbody tr:hover { background: #f8f9ff; }
+  .data-table tbody tr:last-child td { border-bottom: none; font-weight: 600; background: #f0f4ff; }
+  .mom-pos { color: #27ae60; font-weight: 600; }
+  .mom-neg { color: #e94560; font-weight: 600; }
+  .mom-neu { color: #888; }
+  .chart-table-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .chart-table-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -161,6 +201,7 @@
   <button class="tab-btn" onclick="switchTab('ma2026')">Outbound MA Team 2026</button>
   <button class="tab-btn" onclick="switchTab('daystoclose')">⏱ Avg Days to Close</button>
   <button class="tab-btn" onclick="switchTab('cohort')">🎯 Cohorted View of New Logos Won</button>
+  <button class="tab-btn" onclick="switchTab('ae-outbound')">AE Outbound</button>
 </div>
 
 <!-- =============================== OB TEAM 2025 =============================== -->
@@ -912,6 +953,206 @@ new Chart(document.getElementById('dtc-bar'), {
     }
   }
 });
+</script>
+
+<!-- =============================== AE OUTBOUND =============================== -->
+<div id="tab-ae-outbound" class="tab-content">
+
+  <div class="kpi-row">
+    <div class="kpi-card blue">
+      <div class="label">Total Demos Booked</div>
+      <div class="value">101</div>
+      <div class="sub">Jan 2025 – Apr 2026</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Peak Demo Month</div>
+      <div class="value">21</div>
+      <div class="sub">October 2025</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="label">Total Calls Made</div>
+      <div class="value">2,244</div>
+      <div class="sub">Apr 2025 – Apr 2026</div>
+    </div>
+    <div class="kpi-card purple">
+      <div class="label">Peak Call Month</div>
+      <div class="value">661</div>
+      <div class="sub">October 2025</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">2026 YTD Demos</div>
+      <div class="value">25</div>
+      <div class="sub">Jan – Apr 2026</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="label">2026 YTD Calls</div>
+      <div class="value">342</div>
+      <div class="sub">Jan – Apr 2026</div>
+    </div>
+  </div>
+
+  <!-- Demos Booked -->
+  <div class="chart-card full" style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 1px 6px rgba(0,0,0,0.07);margin-bottom:24px;">
+    <h3 style="margin-bottom:20px;font-size:15px;font-weight:700;color:#1a1a2e;">
+      <span class="dot" style="background:#0f3460"></span>Outbound Demos Booked — Month over Month
+    </h3>
+    <div class="chart-table-grid">
+      <div class="chart-wrapper tall" style="position:relative;height:280px;">
+        <canvas id="ae-demos-chart"></canvas>
+      </div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Demos Booked</th>
+              <th>MoM Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan 2025</td><td>2</td><td class="mom-neu">—</td></tr>
+            <tr><td>Feb 2025</td><td>0</td><td class="mom-neg">-100%</td></tr>
+            <tr><td>Mar 2025</td><td>0</td><td class="mom-neu">—</td></tr>
+            <tr><td>Apr 2025</td><td>2</td><td class="mom-pos">—</td></tr>
+            <tr><td>May 2025</td><td>2</td><td class="mom-neu">0%</td></tr>
+            <tr><td>Jun 2025</td><td>1</td><td class="mom-neg">-50%</td></tr>
+            <tr><td>Jul 2025</td><td>2</td><td class="mom-pos">+100%</td></tr>
+            <tr><td>Aug 2025</td><td>2</td><td class="mom-neu">0%</td></tr>
+            <tr><td>Sep 2025</td><td>9</td><td class="mom-pos">+350%</td></tr>
+            <tr><td>Oct 2025</td><td>21</td><td class="mom-pos">+133%</td></tr>
+            <tr><td>Nov 2025</td><td>17</td><td class="mom-neg">-19%</td></tr>
+            <tr><td>Dec 2025</td><td>18</td><td class="mom-pos">+6%</td></tr>
+            <tr><td>Jan 2026</td><td>10</td><td class="mom-neg">-44%</td></tr>
+            <tr><td>Feb 2026</td><td>6</td><td class="mom-neg">-40%</td></tr>
+            <tr><td>Mar 2026</td><td>5</td><td class="mom-neg">-17%</td></tr>
+            <tr><td>Apr 2026</td><td>4</td><td class="mom-neg">-20%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>101</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calls Made -->
+  <div class="chart-card full" style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 1px 6px rgba(0,0,0,0.07);">
+    <h3 style="margin-bottom:20px;font-size:15px;font-weight:700;color:#1a1a2e;">
+      <span class="dot" style="background:#e94560"></span>Outbound Calls Made — Month over Month
+    </h3>
+    <div class="chart-table-grid">
+      <div class="chart-wrapper tall" style="position:relative;height:280px;">
+        <canvas id="ae-calls-chart"></canvas>
+      </div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Calls Made</th>
+              <th>MoM Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Apr 2025</td><td>1</td><td class="mom-neu">—</td></tr>
+            <tr><td>May 2025</td><td>35</td><td class="mom-pos">+3,400%</td></tr>
+            <tr><td>Jun 2025</td><td>75</td><td class="mom-pos">+114%</td></tr>
+            <tr><td>Jul 2025</td><td>22</td><td class="mom-neg">-71%</td></tr>
+            <tr><td>Aug 2025</td><td>204</td><td class="mom-pos">+827%</td></tr>
+            <tr><td>Sep 2025</td><td>407</td><td class="mom-pos">+100%</td></tr>
+            <tr><td>Oct 2025</td><td>661</td><td class="mom-pos">+62%</td></tr>
+            <tr><td>Nov 2025</td><td>200</td><td class="mom-neg">-70%</td></tr>
+            <tr><td>Dec 2025</td><td>297</td><td class="mom-pos">+49%</td></tr>
+            <tr><td>Jan 2026</td><td>93</td><td class="mom-neg">-69%</td></tr>
+            <tr><td>Feb 2026</td><td>80</td><td class="mom-neg">-14%</td></tr>
+            <tr><td>Mar 2026</td><td>137</td><td class="mom-pos">+71%</td></tr>
+            <tr><td>Apr 2026</td><td>32</td><td class="mom-neg">-77%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>2,244</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ▓▓▓ AE OUTBOUND CHARTS ▓▓▓
+(function() {
+  const aeGridOpts = { color: 'rgba(0,0,0,0.05)', drawBorder: false };
+
+  // Demos Booked chart
+  new Chart(document.getElementById('ae-demos-chart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'Demos Booked',
+        data: [2, 0, 0, 2, 2, 1, 2, 2, 9, 21, 17, 18, 10, 6, 5, 4],
+        backgroundColor: [
+          '#0f346099','#0f346099','#0f346099','#0f346099',
+          '#0f346099','#0f346099','#0f346099','#0f346099',
+          '#0f346099','#0f346099','#0f346099','#0f346099',
+          '#e9456099','#e9456099','#e9456099','#e9456099'
+        ],
+        borderColor: [
+          '#0f3460','#0f3460','#0f3460','#0f3460',
+          '#0f3460','#0f3460','#0f3460','#0f3460',
+          '#0f3460','#0f3460','#0f3460','#0f3460',
+          '#e94560','#e94560','#e94560','#e94560'
+        ],
+        borderWidth: 1.5,
+        borderRadius: 5,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y + ' demos' } }
+      },
+      scales: {
+        x: { grid: aeGridOpts, ticks: { maxRotation: 45, font: { size: 11 } } },
+        y: { beginAtZero: true, grid: aeGridOpts, ticks: { stepSize: 5 } }
+      }
+    }
+  });
+
+  // Calls chart
+  new Chart(document.getElementById('ae-calls-chart'), {
+    type: 'bar',
+    data: {
+      labels: ['Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'Calls Made',
+        data: [1, 35, 75, 22, 204, 407, 661, 200, 297, 93, 80, 137, 32],
+        backgroundColor: [
+          '#e9456099','#e9456099','#e9456099','#e9456099',
+          '#e9456099','#e9456099','#e9456099','#e9456099',
+          '#e9456099','#27ae6099','#27ae6099','#27ae6099','#27ae6099'
+        ],
+        borderColor: [
+          '#e94560','#e94560','#e94560','#e94560',
+          '#e94560','#e94560','#e94560','#e94560',
+          '#e94560','#27ae60','#27ae60','#27ae60','#27ae60'
+        ],
+        borderWidth: 1.5,
+        borderRadius: 5,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y.toLocaleString() + ' calls' } }
+      },
+      scales: {
+        x: { grid: aeGridOpts, ticks: { maxRotation: 45, font: { size: 11 } } },
+        y: { beginAtZero: true, grid: aeGridOpts }
+      }
+    }
+  });
+})();
 </script>
 </body>
 </html>
