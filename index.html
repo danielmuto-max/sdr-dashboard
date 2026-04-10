@@ -989,6 +989,16 @@ new Chart(document.getElementById('dtc-bar'), {
       <div class="value">342</div>
       <div class="sub">Jan – Apr 2026</div>
     </div>
+    <div class="kpi-card green">
+      <div class="label">2026 YTD Demos Completed</div>
+      <div class="value">60</div>
+      <div class="sub">Jan – Apr 2026</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="label">Peak Completed Month</div>
+      <div class="value">23</div>
+      <div class="sub">February 2026</div>
+    </div>
   </div>
 
   <!-- Demos Booked -->
@@ -1027,6 +1037,36 @@ new Chart(document.getElementById('dtc-bar'), {
             <tr><td>Mar 2026</td><td>5</td><td class="mom-neg">-17%</td></tr>
             <tr><td>Apr 2026</td><td>4</td><td class="mom-neg">-20%</td></tr>
             <tr><td><strong>Total</strong></td><td><strong>101</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demos Completed -->
+  <div class="chart-card full" style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 1px 6px rgba(0,0,0,0.07);margin-bottom:24px;">
+    <h3 style="margin-bottom:20px;font-size:15px;font-weight:700;color:#1a1a2e;">
+      <span class="dot" style="background:#27ae60"></span>Outbound Demos Completed — Month over Month
+    </h3>
+    <div class="chart-table-grid">
+      <div class="chart-wrapper tall" style="position:relative;height:280px;">
+        <canvas id="ae-completed-chart"></canvas>
+      </div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Demos Completed</th>
+              <th>MoM Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan 2026</td><td>16</td><td class="mom-neu">—</td></tr>
+            <tr><td>Feb 2026</td><td>23</td><td class="mom-pos">+44%</td></tr>
+            <tr><td>Mar 2026</td><td>14</td><td class="mom-neg">-39%</td></tr>
+            <tr><td>Apr 2026</td><td>7</td><td class="mom-neg">-50%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>60</strong></td><td>—</td></tr>
           </tbody>
         </table>
       </div>
@@ -1112,6 +1152,34 @@ new Chart(document.getElementById('dtc-bar'), {
       },
       scales: {
         x: { grid: aeGridOpts, ticks: { maxRotation: 45, font: { size: 11 } } },
+        y: { beginAtZero: true, grid: aeGridOpts, ticks: { stepSize: 5 } }
+      }
+    }
+  });
+
+  // Demos Completed chart
+  new Chart(document.getElementById('ae-completed-chart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan 26','Feb 26','Mar 26','Apr 26'],
+      datasets: [{
+        label: 'Demos Completed',
+        data: [16, 23, 14, 7],
+        backgroundColor: ['#27ae6099','#27ae6099','#27ae6099','#27ae6099'],
+        borderColor: ['#27ae60','#27ae60','#27ae60','#27ae60'],
+        borderWidth: 1.5,
+        borderRadius: 5,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y + ' demos completed' } }
+      },
+      scales: {
+        x: { grid: aeGridOpts },
         y: { beginAtZero: true, grid: aeGridOpts, ticks: { stepSize: 5 } }
       }
     }
