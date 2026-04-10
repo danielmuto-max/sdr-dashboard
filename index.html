@@ -239,12 +239,12 @@
   <div class="kpi-row">
     <div class="kpi-card blue">
       <div class="label">Total Calls</div>
-      <div class="value">11,808</div>
+      <div class="value">11,986</div>
       <div class="sub">Jan – Apr 2026</div>
     </div>
     <div class="kpi-card">
       <div class="label">Total Demos Booked</div>
-      <div class="value">244</div>
+      <div class="value">249</div>
       <div class="sub">4 months</div>
     </div>
     <div class="kpi-card green">
@@ -254,7 +254,7 @@
     </div>
     <div class="kpi-card orange">
       <div class="label">Avg Show Rate</div>
-      <div class="value">65.5%</div>
+      <div class="value">64.8%</div>
       <div class="sub">Demos Completed / Booked</div>
     </div>
     <div class="kpi-card purple">
@@ -305,33 +305,33 @@
 <!-- =============================== MA TEAM 2026 =============================== -->
 <div id="tab-ma2026" class="tab-content">
   <div class="note-banner">
-    ℹ️ This is a newer team with <strong>3 months</strong> of data (Jan–Mar 2026). January tracked Conner, February tracked Dylan.
+    ℹ️ This is a newer team with <strong>4 months</strong> of data (Jan–Apr 2026). January tracked Conner, February tracked Dylan.
   </div>
   <div class="kpi-row">
     <div class="kpi-card blue">
       <div class="label">Total Calls</div>
-      <div class="value">528</div>
-      <div class="sub">Jan – Mar 2026</div>
+      <div class="value">1,100</div>
+      <div class="sub">Jan – Apr 2026</div>
     </div>
     <div class="kpi-card">
       <div class="label">Total Demos Booked</div>
-      <div class="value">15</div>
-      <div class="sub">3 months</div>
+      <div class="value">17</div>
+      <div class="sub">4 months</div>
     </div>
     <div class="kpi-card green">
       <div class="label">Total Emails</div>
-      <div class="value">1,147</div>
-      <div class="sub">Jan – Mar 2026</div>
+      <div class="value">1,419</div>
+      <div class="sub">Jan – Apr 2026</div>
     </div>
     <div class="kpi-card orange">
       <div class="label">Avg Connect Rate</div>
-      <div class="value">17.7%</div>
-      <div class="sub">Jan & Feb avg</div>
+      <div class="value">16.1%</div>
+      <div class="sub">Jan–Apr avg</div>
     </div>
     <div class="kpi-card purple">
       <div class="label">Demos Completed</div>
       <div class="value">9</div>
-      <div class="sub">Jan–Mar total</div>
+      <div class="sub">Jan–Apr total</div>
     </div>
   </div>
 
@@ -622,12 +622,12 @@ new Chart(document.getElementById('ob2025-connectrate'), {
 // OUTBOUND ICP TEAM 2026
 // ═══════════════════════════════════════════════════════════════════════════════
 const icp26months  = ['Jan','Feb','Mar','Apr*'];
-const icp26booked  = [58, 73, 88, 25];
-const icp26compl   = [33, 39, 50, 13];
-const icp26calls   = [3002, 3277, 4337, 1192];
-const icp26emails  = [1608, 2553, 5346, 538];
+const icp26booked  = [58, 73, 88, 30];
+const icp26compl   = [33, 39, 50, 15];
+const icp26calls   = [3002, 3277, 4337, 1370];
+const icp26emails  = [1608, 2553, 5346, 552];
 const icp26won     = [12, 14, 21, 6];
-const icp26show    = [58.93, 67.2, 70.42, null];
+const icp26show    = [58.93, 67.2, 70.42, 62.5];
 const icp26conn    = [9.23, 8.64, null, 12.0];
 
 new Chart(document.getElementById('icp2026-demos'), {
@@ -687,8 +687,8 @@ new Chart(document.getElementById('icp2026-won'), {
 new Chart(document.getElementById('icp2026-showrate'), {
   type: 'line',
   data: {
-    labels: ['Jan','Feb','Mar'],
-    datasets: [ lineDataset('Show Rate %', [58.93, 67.2, 70.42], '#e67e22') ]
+    labels: ['Jan','Feb','Mar','Apr*'],
+    datasets: [ lineDataset('Show Rate %', [58.93, 67.2, 70.42, 62.5], '#e67e22') ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
@@ -733,12 +733,12 @@ new Chart(document.getElementById('icp2026-connectrate'), {
 // ═══════════════════════════════════════════════════════════════════════════════
 // OUTBOUND MA TEAM 2026
 // ═══════════════════════════════════════════════════════════════════════════════
-const ma26months = ['Jan (Conner)', 'Feb (Dylan)', 'March'];
-const ma26booked = [5, 5, 5];
-const ma26compl  = [3, 2, 4];
-const ma26calls  = [101, 219, 208];
-const ma26emails = [242, 179, 726];
-const ma26conn   = [18.86, 16.44, null];
+const ma26months = ['Jan (Conner)', 'Feb (Dylan)', 'March', 'April'];
+const ma26booked = [5, 5, 5, 2];
+const ma26compl  = [3, 2, 4, 0];
+const ma26calls  = [101, 219, 502, 278];
+const ma26emails = [242, 179, 874, 124];
+const ma26conn   = [18.86, 16.44, 15.0, 14.0];
 
 new Chart(document.getElementById('ma2026-demos'), {
   type: 'bar',
@@ -781,8 +781,8 @@ new Chart(document.getElementById('ma2026-activity'), {
 new Chart(document.getElementById('ma2026-connectrate'), {
   type: 'line',
   data: {
-    labels: ['Jan (Conner)', 'Feb (Dylan)'],
-    datasets: [ lineDataset('Connect Rate %', [18.86, 16.44], '#8e44ad') ]
+    labels: ['Jan (Conner)', 'Feb (Dylan)', 'March', 'April'],
+    datasets: [ lineDataset('Connect Rate %', [18.86, 16.44, 15.0, 14.0], '#8e44ad') ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
